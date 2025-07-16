@@ -150,7 +150,7 @@ module ifx_dig_top;
     //===========================CLOCKS=============================
     // TODO: Modify generate_clock task call so that a 100 MHz will be generated
     initial begin
-        generate_clock();
+        generate_clock("ns", 10);
     end
 
     // TODO: Write a task capable of generating a clock signal
@@ -162,7 +162,7 @@ module ifx_dig_top;
             "ms":clk_half_per_ps = period*1000*1e9/2;
         endcase
         clk=0;
-        forever begin#(clk+clk_half_per_ps*1ps) clk=!clk;
+        forever begin#(clk_half_per_ps*1ps) clk=!clk;
         end
     endtask
 

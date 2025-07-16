@@ -37,7 +37,9 @@ class ifx_dig_hello_world extends ifx_dig_testbase;
         super.main_phase(phase); // call default main phase, contains reset
 
         `TEST_INFO("Main phase started")
-
+        #100us;
+        
+        drive_reset(.use_clock_cycle(1), .numb_of_clocks(20));
         #100us;
 
         phase.drop_objection(this);
